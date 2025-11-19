@@ -1,9 +1,16 @@
 #!/usr/bin/env python3
+import platform
 import json
 import os
 
-dir = os.path.abspath(os.path.dirname(__file__))
-JSON_DIR = os.path.join(dir, "JSON")
+# Get the JSON_DIR constant
+try:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    # __file__ not defined (common on Windows double-click)
+    base_dir = os.getcwd()
+
+JSON_DIR = os.path.join(base_dir, "JSON")
 os.makedirs(JSON_DIR, exist_ok=True)
 
 def load_json(filename) -> dict:
@@ -27,8 +34,7 @@ def check_input(message) -> str:
     answer = input(message).strip()
     while answer == "":
         print("Please enter something.")
-        answer = input(message)
-
+        answer = input(message).strip()
     return answer
 
 def main() -> None:
@@ -106,20 +112,19 @@ def main() -> None:
 
     filename = check_input("What would you like the vocab file to be called? ") # The name the user desires for the JSON file
 
-    has_file_extension = False
+    # Check if the filename would work on Windows
+    if platform.system() == "Windows":
+        reserved = {"con","prn","aux","nul",
+                *(f"com{i}" for i in range(1,10)),
+                *(f"lpt{i}" for i in range(1,10))}
 
-    # Check if it ends in `.json`
-    if len(filename) >= 5:
-        last_5_letters = ""
-        for i in range(5):
-            j = 5 - i
-            letter = filename[len(filename) - j]
-            last_5_letters = last_5_letters + letter
+        if filename.lower() in reserved:
+            print("That filename cannot be used on Windows.")
+            return
 
-        if last_5_letters == ".json":
-            has_file_extension = True
-        else:
-            has_file_extension = False
+    # Check if the filename ends in `.json`
+    if filename.lower().endswith(".json"):
+        has_file_extension = True
     else:
         has_file_extension = False
 

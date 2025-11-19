@@ -2,6 +2,7 @@
 from typing import Tuple, Dict, Optional, Any
 from pathlib import Path
 import colorama
+import platform
 import random
 import json
 import time
@@ -11,13 +12,27 @@ import os
 # Initialise colorama (it will translate ANSI codes on Windows automatically)
 colorama.init(autoreset=False)
 
+# Print system information
+print(f"Running with Python {platform.python_version()} on {platform.system()}. \nPress CTRL+C to quit. \n")
+
 # Get the JSON_DIR constant
-dir = os.path.abspath(os.path.dirname(__file__))
-JSON_DIR = os.path.join(dir, "JSON")
+try:
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+except NameError:
+    # __file__ not defined (common on Windows double-click)
+    base_dir = os.getcwd()
+
+JSON_DIR = os.path.join(base_dir, "JSON")
+os.makedirs(JSON_DIR, exist_ok=True)
 
 class VocabFileError(Exception):
     """Custom exception indicating a problem with the vocabulary JSON file."""
     pass
+
+def on_keyboard_interrupt():
+    """ Print a friendly goodbye message then exit with code 0. """
+    print("\nThanks for using VocabPy. Goodbye!")
+    sys.exit(0)
 
 def get_jsons(dir: str) -> list:
     """
@@ -59,7 +74,9 @@ def clear_lines(lines: int) -> None:
     :param lines: The number of lines to remove.
     """
 
-    if lines <= 0:
+    supports_ansi = sys.stdout.isatty() and os.getenv("TERM") not in (None, "dumb")
+
+    if lines <= 0 or not supports_ansi:
         return
 
     # Move cursor up `lines` rows
@@ -84,7 +101,9 @@ def dynamic_print(text: str):
     try:
         sys.stdout.write(text + ("\n" if not text.endswith("\n") else ""))
         sys.stdout.flush()
-    except:
+    except KeyboardInterrupt:
+        on_keyboard_interrupt()
+    except Exception:
         print(text + ("\n" if not text.endswith("\n") else ""))
 
 def dynamic_input(text: str) -> str:
@@ -96,9 +115,13 @@ def dynamic_input(text: str) -> str:
     try:
         # move to new line before input
         sys.stdout.write(f"\r{text}")
+        sys.stdout.flush()
         user_input = input() # now input works normally
         return user_input
-    except:
+    except KeyboardInterrupt:
+        on_keyboard_interrupt()
+        sys.exit(0)
+    except Exception:
         print(text, end="")
         user_input = input()
         return user_input
@@ -128,9 +151,20 @@ def get_display_filename(full_path: str, base_dir: str | None = None) -> str:
     """
 
     # Turn everything into `pathlib.Path` objects (handles any OS)
-    file_path = Path(full_path).expanduser().resolve()
+    file_path = Path(full_path).expanduser()
+    # try-except loop to catch Windows quirk
+    try:
+        file_path = file_path.resolve()
+    except OSError:
+        pass  # fall back to un-resolved path
+
     if base_dir is not None:
         base_path = Path(base_dir).expanduser().resolve()
+        # try-except loop to catch Windows quirk
+        try:
+            file_path = file_path.resolve()
+        except OSError:
+            pass  # fall back to un-resolved path
     else:
         base_path = None
 
@@ -467,17 +501,16 @@ def main() -> None:
         else:
             dynamic_print(f"Incorrect. Correct answer: {correct_answer}")
 
-        # Pause briefly so the user can read the feedback, then clean up the
-        # terminal lines that were printed for the question/answer.
+        # Pause briefly so the user can read the feedback, then clean up the terminal lines that were printed for the question/answer.
         time.sleep(3)
         clear_lines(2)
 
-    # --------------------------- Header ---------------------------------
+    # --------------------------- Header --------------------------------
     print("VocabPy - Foreign Vocabulary Learner")
-    print("Press CTRL+C to quit.")
-    print("\n")
+    print("------------------------------------")
+    print("")
 
-    # ----------------------- Choose a vocab file ------------------------
+    # ----------------------- Choose a vocab file -----------------------
     chosen_file_number = get_file_number()
 
     # `0` signals that no files were found (see `get_file_number` impl.).
@@ -487,18 +520,16 @@ def main() -> None:
         sys.exit(1)
 
     # Resolve the actual filename from the global `jsons` list.
-    # `jsons` is populated by `utils.get_file_number` at import time.
     vocab_file: Optional[str] = (
         jsons[chosen_file_number - 1] if jsons else None
     )
 
-    # If for some reason `jsons` is empty (shouldn't happen after the
-    # check above), we fall back to `None` and later exit gracefully.
+    # If for some reason `jsons` is empty (shouldn't happen after the check above), fall back to `None` and later exit gracefully.
     if not vocab_file:
         print("Unable to locate the selected vocabulary file.")
         sys.exit(1)
 
-    # --------------------------- Question UI ------------------------------------
+    # --------------------------- Question UI ---------------------------
     print("")
     print("Question")
     print("--------")
@@ -508,13 +539,14 @@ def main() -> None:
         while True:
             ask_question(vocab_file)
     except KeyboardInterrupt:
-        # Gracefully handle Ctrl‑C – give the user a friendly goodbye.
-        print("\nThanks for using VocabPy. Goodbye!")
+        on_keyboard_interrupt()
         sys.exit(0)
         
 try:
     main()
 except KeyboardInterrupt:
-    print("\nExiting...")
+    on_keyboard_interrupt()
 except Exception as e:
-    print(f"Error: {e}")
+    print(f"Error: {e}.")
+    print("Report it at https://github.com/46Dimensions/VocabPy/issues/new.")
+    time.sleep(5)
