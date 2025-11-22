@@ -24,7 +24,7 @@ In the same directory, run `python main.py`.
 To make a vocabulary JSON file, run `python create_vocab_file.py`.
 
 ## Reporting issues
-Go to https://github.com/46Dimensions/LexiconPro/issues/new.
+Go to [Create New Issue](https://github.com/46Dimensions/LexiconPro/issues/new).
 
 ## License
 Licensed under the MIT License — see LICENSE for details.
