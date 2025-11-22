@@ -3,6 +3,7 @@ VocabPy is regularly updated. Below is a list of recent updates.
 
 ## v1.1.0
 Released: 19th November 2025
+
 ### Markdown Descriptions
 - Updated `README.md`
 - Added this `UPDATES.md`
@@ -34,6 +35,10 @@ Released: 19th November 2025
 
 ## v1.1.1
 Released: 22nd November 2025
+
+### Main.py
+- Edited print when there are no JSON files found for clarity
+- Now exits with code 0 instead of 1 when the above happens
 
 ### Installation Scripts
 - Added colour output

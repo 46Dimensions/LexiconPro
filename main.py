@@ -516,8 +516,8 @@ def main() -> None:
     # `0` signals that no files were found (see `get_file_number` impl.).
     if chosen_file_number == 0:
         print("It seems like there are no vocabulary files.")
-        print("Use the vocab file creator to make one!")
-        sys.exit(1)
+        print("Use the vocab file creator (create_vocab_file.py) to make one!")
+        sys.exit(0)
 
     # Resolve the actual filename from the global `jsons` list.
     vocab_file: Optional[str] = (
