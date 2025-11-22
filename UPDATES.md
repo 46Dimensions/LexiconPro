@@ -49,7 +49,7 @@ Released: 22nd November 2025
 #### Specific changes for Unix installer
 - Now runs `cd VocabPy` after creating it to make sure everything is in that directory
 
-## LexiconPro - v1.1.2
+## LexiconPro - v2.0.0
 Released: 22nd November 2025
 ### Repository
 - Renamed to 46Dimensions/LexiconPro
