@@ -31,3 +31,13 @@ Released: 19th November 2025
 - Added download of `create_vocab_file.py`
 - Added Python check - aborts if Python is not installed or is below version 3.10.
 - Now runs the script from inside the virtual environment
+
+## v1.1.1
+Released: 22nd November 2025
+
+### Installation Scripts
+- Added colour output
+#### Specific changes for Windows installer
+- Made the errorlevel check safer
+- Made all paths consistent
+- Runs `main.py` without activating Virtual Environment first (activation is unnecessary)
