@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
+import colorama
 import platform
 import json
+import time
+import sys
 import os
 
 # Get the JSON_DIR constant
@@ -13,9 +16,83 @@ except NameError:
 JSON_DIR = os.path.join(base_dir, "JSON")
 os.makedirs(JSON_DIR, exist_ok=True)
 
+# Initialise colorama (it will translate ANSI codes on Windows automatically)
+colorama.init(autoreset=False)
+
+# Print system information
+print(f"Running with Python {platform.python_version()} on {platform.system()}. \nPress CTRL+C to quit. \n")
+
+def on_keyboard_interrupt():
+    """ Print a friendly goodbye message then exit with code 0. """
+    print("\nThanks for using LexiconPro. Goodbye!")
+    sys.exit(0)
+
+def clear_lines(lines: int) -> None:
+    """
+    Remove the lines from the terminal. \n
+    :param lines: The number of lines to remove.
+    """
+
+    supports_ansi = sys.stdout.isatty() and os.getenv("TERM") not in (None, "dumb")
+
+    if lines <= 0 or not supports_ansi:
+        return
+
+    # Move cursor up `lines` rows
+    sys.stdout.write(colorama.Cursor.UP(lines))
+
+    # Erase each line and move down one row
+    for _ in range(lines):
+        sys.stdout.write(colorama.ansi.clear_line())   # equivalent to "\033[K"
+        sys.stdout.write("\n")
+
+    # Return cursor to the starting line
+    sys.stdout.write(colorama.Cursor.UP(lines))
+    sys.stdout.flush()
+
+def dynamic_input(text: str) -> str:
+    """ 
+    Print text with carriage return then ask the user for input. \n
+    Fallback: print text normally then ask for input. \n
+
+    Parameters
+    ----------
+    text : str
+        The text to print before asking the user for input
+
+    Returns
+    -------
+    str
+        The user's input
+    """
+    try:
+        # move to new line before input
+        sys.stdout.write(f"\r{text}")
+        sys.stdout.flush()
+        user_input = input() # now input works normally
+        return user_input
+    except KeyboardInterrupt:
+        on_keyboard_interrupt()
+        sys.exit(0)
+    except Exception:
+        print(text, end="")
+        user_input = input()
+        return user_input
+
 def load_json(filename) -> dict:
     """
     Return the contents of the JSON file `filename` as a dictionary
+
+    Parameters
+    ----------
+    filename : str
+        The JSON file to get the dictionary from
+
+    Returns
+    -------
+    dict
+        The dictionary found in the JSON file.   
+        If there is no dictionary in the file, returns an empty dict.
     """
     if os.path.exists(filename):
         with open(filename, 'r', encoding='utf-8') as f:
@@ -26,15 +103,38 @@ def load_json(filename) -> dict:
     return {}
 
 def save_json(filename: str, data: dict) -> None:
-    """Write the dictionary `data` to the JSON file `filename`"""
+    """
+    Write the dictionary `data` to the JSON file `filename`
+
+    Parameters
+    ----------
+    filename : str
+        The filename of the JSON file to be written
+    data : str
+        The dictionary to be written into the JSON file
+    """
     with open(filename, 'w', encoding='utf-8') as f:
         json.dump(data, f, indent=4, ensure_ascii=False)
 
-def check_input(message) -> str:
-    answer = input(message).strip()
+def check_input(question) -> str:
+    """
+    Check if the user has entered something.   
+
+    Parameters
+    ----------
+    message : str
+        The question to be posed to the user.
+
+    Returns
+    -------
+    str
+        The input from the user
+    """
+    answer = input(question).strip()
+    # If the input is nothing, tell the user and ask again
     while answer == "":
         print("Please enter something.")
-        answer = input(message).strip()
+        answer = input(question).strip()
     return answer
 
 def main() -> None:
@@ -94,15 +194,19 @@ def main() -> None:
     words = []
 
     # Get the first word and its meaning then add it to `words`
-    lang1_word = check_input(f"What is the first {learning} word in the vocab list? ")
-    translated = check_input(f"What is {lang1_word} in {spoken}? ")
+    lang1_word = dynamic_input(f"What is the first {learning} word in the vocab list? ")
+    translated = dynamic_input(f"What is {lang1_word} in {spoken}? ")
     words.append([lang1_word, translated])
+    time.sleep(0.5)
+    clear_lines(2)
 
     # Get the other word/meaning pairs
     for i in range(int(num_words) - 1):
-        lang1_word = check_input(f"What is the next {learning} word in the vocab list? ")
-        translated = check_input(f"What is {lang1_word} in {spoken}? ")
+        lang1_word = dynamic_input(f"What is the next {learning} word in the vocab list? ")
+        translated = dynamic_input(f"What is {lang1_word} in {spoken}? ")
         words.append([lang1_word, translated])
+        time.sleep(0.5)
+        clear_lines(2)
 
     # Append the items in `words` to `data`
     for i in range(len(words)):

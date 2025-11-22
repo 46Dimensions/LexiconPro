@@ -52,6 +52,13 @@ Released: 22nd November 2025
 ## LexiconPro - v1.1.2
 Released: 22nd November 2025
 ### Repository
-- Renamed to `46Dimensions/LexiconPro`
+- Renamed to 46Dimensions/LexiconPro
+### Create Vocab File.py
+- Added carriage return for word/meaning input
+- Added 0.5-second wait between asking for word/meaning input and clearing lines
+- Improved documentation
+### Main.py
+- Removed unnecessary `Any` import from `typing`
+- Added exit with code 1 (error) after an exception in `main()`
 ### All files
 - Changed all instances of `VocabPy` (except some in this file) to `LexiconPro`

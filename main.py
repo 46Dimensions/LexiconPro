@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from typing import Tuple, Dict, Optional, Any
+from typing import Tuple, Dict, Optional
 from pathlib import Path
 import colorama
 import platform
@@ -550,3 +550,4 @@ except Exception as e:
     print(f"Error: {e}.")
     print("Report it at https://github.com/46Dimensions/LexiconPro/issues/new.")
     time.sleep(5)
+    sys.exit(1)
