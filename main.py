@@ -13,16 +13,16 @@ import os
 init(autoreset=False)
 
 # Print system information
-print(f"{Fore.GREEN}Running with Python {platform.python_version()} on {platform.system()}.{Style.RESET_ALL}\n")
-print(f"{Fore.CYAN}Vocabulary Plus - A CLI foreign vocabulary learning tool.{Style.RESET_ALL}")
-print(f"{Fore.GREEN}Version: 1.0.0{Style.RESET_ALL}")
+print(f"{Fore.GREEN}Running with Python {platform.python_version()} on {platform.system()}.{Style.RESET_ALL}")
+print(f"{Fore.GREEN}Vocabulary Plus Version: 1.0.0{Style.RESET_ALL}")
 print(f"{Fore.RED}Press CTRL+C to quit.{Style.RESET_ALL}\n")
+time.sleep(0.5)
 
 # Get the JSON_DIR constant
 try:
     base_dir = os.path.dirname(os.path.abspath(__file__))
-except NameError:
-    # __file__ not defined (common on Windows double-click)
+except:
+    # __file__ not defined
     base_dir = os.getcwd()
 
 JSON_DIR = os.path.join(base_dir, "JSON")
@@ -223,6 +223,7 @@ def get_file_number() -> int:
 
     # Print heading
     print(f"{Fore.LIGHTBLUE_EX}Vocabulary Files{Style.RESET_ALL}")
+    time.sleep(1)
 
     if jsons:
         # Print the list
@@ -241,12 +242,12 @@ def get_file_number() -> int:
             failed = False
             if not user_input.isdigit():
                 failed = True
-                print(f"{Fore.RED}Please enter an integer{Style.RESET_ALL}")
+                print(f"{Fore.YELLOW}Please enter an integer{Style.RESET_ALL}")
             
             if failed == False:
                 if int(user_input) > len(jsons) or int(user_input) < 1:
                     failed = True
-                    print(f"{Fore.RED}Please enter an integer between 1 and {len(jsons)}.{Style.RESET_ALL}") # type: ignore
+                    print(f"{Fore.YELLOW}Please enter an integer between 1 and {len(jsons)}.{Style.RESET_ALL}") # type: ignore
 
             return user_input
 
@@ -508,6 +509,7 @@ def main() -> None:
     print(f"{Fore.CYAN}Vocabulary Plus{Style.RESET_ALL}")
     print("A CLI foreign vocabulary learning tool.")
     print("Learn more at https://github.com/46Dimensions/VocabularyPlus.\n")
+    time.sleep(2)
 
     # ----------------------- Choose a vocab file -----------------------
     chosen_file_number = get_file_number()
@@ -516,6 +518,7 @@ def main() -> None:
     if chosen_file_number == 0:
         print(f"{Fore.YELLOW}It seems like there are no vocabulary files.{Style.RESET_ALL}")
         print(f"{Fore.YELLOW}Use the vocab file creator (create_vocab_file.py) to make one!{Style.RESET_ALL}")
+        time.sleep(5)
         sys.exit(0)
 
     # Resolve the actual filename from the global `jsons` list.
@@ -525,7 +528,7 @@ def main() -> None:
 
     # If for some reason `jsons` is empty (shouldn't happen after the check above), fall back to `None` and later exit gracefully.
     if not vocab_file:
-        print(f"{Fore.RED}Unable to locate the selected vocabulary file.{Style.RESET_ALL}")
+        print(f"{Fore.YELLOW}Unable to locate the selected vocabulary file.{Style.RESET_ALL}")
         sys.exit(1)
 
     # --------------------------- Question UI ---------------------------
@@ -544,7 +547,7 @@ try:
 except KeyboardInterrupt:
     on_keyboard_interrupt()
 except Exception as e:
-    print(f"{Fore.RED}Error: . {Style.RESET_ALL}")
-    print(f"{Fore.LIGHTCYAN_EX}Report it at https://github.com/46Dimensions/VocabularyPlus/issues/new.{Style.RESET_ALL}")
-    time.sleep(5)
+    print(f"{Fore.RED}Error: .{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTBLUE_EX}Report it at https://github.com/46Dimensions/VocabularyPlus/issues/new. {Style.RESET_ALL}")
+    time.sleep(10)
     sys.exit(1)
