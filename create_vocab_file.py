@@ -24,7 +24,7 @@ print(f"{Fore.GREEN}Running with Python {platform.python_version()} on {platform
 
 def on_keyboard_interrupt():
     """ Print a friendly goodbye message then exit with code 0. """
-    print(f"\n{Fore.GREEN}Thanks for using Vocabulary Plus. Goodbye!{Style.RESET_ALL}")
+    print(f"\n{Fore.LIGHTGREEN_EX}Thanks for using Vocabulary Plus. Goodbye!{Style.RESET_ALL}")
     sys.exit(0)
 
 def clear_lines(lines: int) -> None:
