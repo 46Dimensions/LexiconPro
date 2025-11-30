@@ -7,9 +7,9 @@ green="\033[32m"
 yellow="\033[33m"
 reset="\033[0m"
 
-echo "${green}==============================${reset}"
-echo "${green}Vocabulary Plus Unix Installer${reset}"
-echo "${green}==============================${reset}"
+echo "${green}====================================${reset}"
+echo "${green}Vocabulary Plus Unix Installer 1.0.1${reset}"
+echo "${green}====================================${reset}"
 echo
 
 BASE_URL="https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main"
@@ -93,7 +93,7 @@ EOF
 chmod +x "$LAUNCHER"
 
 echo
-echo "${green}Installation complete!${reset}"
+echo "${green}Vocabulary Plus 1.0.1 installed successfully${reset}"
 echo "You can now run:"
 echo "  vocabularyplus           # Runs main.py"
 echo "  vocabularyplus create    # Runs create_vocab_file.py"

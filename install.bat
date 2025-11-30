@@ -8,9 +8,9 @@ set "green=%ESC%[32m"
 set "yellow=%ESC%[33m"
 set "reset=%ESC%[0m"
 
-echo %green%=================================%reset%
-echo %green%Vocabulary Plus Windows Installer%reset%
-echo %green%=================================%reset%
+echo %green%=======================================%reset%
+echo %green%Vocabulary Plus Windows Installer 1.0.1%reset%
+echo %green%=======================================%reset%
 echo.
 
 :: URLs
@@ -90,7 +90,7 @@ echo )
 set "PATH=%LAUNCHER_DIR%;%PATH%"
 
 echo.
-echo %green%Installation complete!%reset%
+echo %green%Vocabulary Plus 1.0.1 installed successfully%reset%
 echo You can now run:
 echo   vocabularyplus           ^> runs main.py
 echo   vocabularyplus create    ^> runs create_vocab_file.py

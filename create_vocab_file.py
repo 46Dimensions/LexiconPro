@@ -20,7 +20,10 @@ os.makedirs(JSON_DIR, exist_ok=True)
 init(autoreset=False)
 
 # Print system information
-print(f"{Fore.GREEN}Running with Python {platform.python_version()} on {platform.system()}.{Style.RESET_ALL} \n{Fore.RED}Press CTRL+C to quit.{Style.RESET_ALL} \n")
+print(f"{Fore.GREEN}Running with Python {platform.python_version()} on {platform.system()}.{Style.RESET_ALL}")
+print(f"{Fore.GREEN}Vocabulary Plus Version: 1.0.1{Style.RESET_ALL}")
+print(f"{Fore.RED}Press CTRL+C to quit.{Style.RESET_ALL}\n")
+time.sleep(0.5)
 
 def on_keyboard_interrupt():
     """ Print a friendly goodbye message then exit with code 0. """
