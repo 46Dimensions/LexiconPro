@@ -1,5 +1,5 @@
 # Vocabulary Plus - Updates
-Vocabulary Plus is regularly updated. Below is a list of recent minor updates (0.1.1 to 1.0.0).
+Vocabulary Plus is regularly updated. Below is a list of recent updates (0.1.1 to 1.0.1).
 
 ## v0.1.1
 Released: 19th November 2025
@@ -8,7 +8,7 @@ Released: 19th November 2025
 - Updated `README.md`
 - Added this `UPDATES.md`
 
-### Main.py
+### Main
 #### Fixed some potential bugs when running on Windows:
 - Added a fallback if the terminal does not support ANSI cursor movement
 - Added output flush in `dynamic_input()` to prevent issues displaying text with `\r`.
@@ -19,7 +19,7 @@ Released: 19th November 2025
 - Moved the `Use CTRL+C to quit` message to just after printing the version info
 - Added an underline beneath the VocabPy title lines
 
-### Create Vocab File.py
+### Create Vocab File
 #### Fixed Windows compatibility issues:
 - Fixed an issue where the vocabulary file is not saved properly
 - Simplified `.json` extension check to work with uppercase file extensions on Windows
@@ -53,11 +53,11 @@ Released: 22nd November 2025
 Released: 22nd November 2025
 ### Repository
 - Renamed to 46Dimensions/LexiconPro
-### Create Vocab File.py
+### Create Vocab File
 - Added carriage return for word/meaning input
 - Added 0.5-second wait between asking for word/meaning input and clearing lines
 - Improved documentation
-### Main.py
+### Main
 - Removed unnecessary `Any` import from `typing`
 - Added exit with code 1 (error) after an exception in `main()`
 ### All files
@@ -68,19 +68,31 @@ Released: 23rd November 2025
 ### Repository
 - Renamed to 46Dimensions/VocabularyPlus
 - Changed release names
-### Updates.md
+### Updates
 - Changed version names
 - Clarified which versions are notated at the top of the file
 ### All files
 - Changed all instances of `LexiconPro` (except some in this file) to `Vocabulary Plus` or `VocabularyPlus`
 
 ## v1.0.0
+Released: 29th November 2025
 ### All Python files
 - Added coloured output with `colorama`
-### Main.py
+### Main
 - Added waiting
 - Added printing of Vocabulary Plus version as well as Python version
 ### Installation Scripts
 - You can now run Vocabulary Plus with the `vocabularyplus` command in your terminal.    
 Use `vocabularyplus create` to create a vocabulary file.
 - Now deletes requirements.txt after installation
+
+## v1.0.1
+Released: 30th November 2025
+### Create Vocab File
+- Made colours consistent
+- Properly implemented `KeyboardInterrupt` handling
+### Windows Installer
+- Changed accidental use of 'color' to 'colour'
+### Markdown Descriptions
+- Renamed UPDATES.md to updates.md
+- Edited link to updates in README
