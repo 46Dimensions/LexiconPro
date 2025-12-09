@@ -593,7 +593,7 @@ try:
 except KeyboardInterrupt:
     on_keyboard_interrupt("")
 except Exception as e:
-    print(f"{Fore.RED}Error: .{Style.RESET_ALL}")
+    print(f"{Fore.RED}Error: {e}.{Style.RESET_ALL}")
     print(f"{Fore.LIGHTBLUE_EX}Report it at https://github.com/46Dimensions/VocabularyPlus/issues/new. {Style.RESET_ALL}")
     time.sleep(10)
     sys.exit(1)
