@@ -30,5 +30,4 @@ Go to [Create New Issue](https://github.com/46Dimensions/VocabularyPlus/issues/n
 Licensed under the MIT License — see LICENSE for details.
 
 ## Developer Edition
-To view updates before they are released, go to Branches and select the section you want to view updates for.
-**Developer Edition may contain bugs. Avoid installation.**
+The Developer Edition lets you preview unreleased updates by viewing the relevant [branches](https://github.com/46Dimensions/VocabularyPlus/branches) in the repo; it’s experimental and may contain bugs, so you should **avoid installing it**.
