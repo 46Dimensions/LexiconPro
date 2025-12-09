@@ -40,7 +40,7 @@ def on_keyboard_interrupt(summary: str) -> None:
     if summary:
         print("\n" + summary)
 
-    print(f"{Fore.LIGHTGREEN_EX}Thanks for using Vocabulary Plus. Goodbye!{Style.RESET_ALL}")
+    print(f"{Fore.LIGHTGREEN_EX}Thank you for using Vocabulary Plus. Goodbye!{Style.RESET_ALL}")
     sys.exit(0)
 
 def get_jsons(dir: str) -> list:
