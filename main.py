@@ -262,7 +262,42 @@ def get_file_number() -> int:
         # If `jsons` doesn't exist, return 0
         # This should not happen as the script exits
         return 0
+
+def get_summary(user_answers: list, correct_answers: list) -> str:
+    """
+    Generate a summary of the user's performance.
     
+    :param user_answers: The answers given by the user
+    :type user_answers: list
+    :param correct_answers: The correct answers
+    :type correct_answers: list
+    :return summary: A formatted summary string
+    """
+    correct = 0
+    incorrect = 0
+    not_answered = 0
+
+    # Check each answer for correct/incorrect/not answered
+    total_questions = len(correct_answers)
+    for i in range(total_questions):
+        if user_answers[i] == correct_answers[i]:
+            correct += 1
+        elif user_answers[i] == "":
+            not_answered += 1
+        else:
+            incorrect += 1
+
+    # Forma the summary
+    summary = f"""
+    {Fore.CYAN}Quiz Summary:{Style.RESET_ALL}
+    Total Questions: {total_questions}
+    {Fore.GREEN}Correct Answers: {correct}{Style.RESET_ALL}
+    {Fore.RED}Incorrect Answers: {incorrect}{Style.RESET_ALL}
+    {Fore.YELLOW}Not Answered: {not_answered}{Style.RESET_ALL}
+    """
+
+    return summary
+
 def get_question(json_file: str) -> Tuple[str, str, str]:
     """
     Load a vocabulary JSON file and generate a single question.
