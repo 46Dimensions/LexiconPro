@@ -297,7 +297,7 @@ def get_summary(user_answers: list, correct_answers: list) -> str:
             incorrect += 1
 
     # Forma the summary
-    summary = f"\n{Fore.CYAN}Quiz Summary{Style.RESET_ALL}\n   Questions Attempted: {total_questions}\n{Fore.GREEN}   Correct Answers: {correct}{Style.RESET_ALL}\n{Fore.RED}   Incorrect Answers: {incorrect}{Style.RESET_ALL}\n{Fore.YELLOW}   Not Answered: {not_answered}{Style.RESET_ALL}\n"
+    summary = f"\n{Fore.CYAN}Quiz Summary{Style.RESET_ALL}\nQuestions Attempted: {total_questions}\n{Fore.GREEN}Correct Answers: {correct}{Style.RESET_ALL}\n{Fore.RED}Incorrect Answers: {incorrect}{Style.RESET_ALL}\n{Fore.YELLOW}Not Answered: {not_answered}{Style.RESET_ALL}\n"
 
     return summary
 
