@@ -20,6 +20,21 @@ set "MAIN_URL=%BASE_URL%/main.py"
 set "CREATE_URL=%BASE_URL%/create_vocab_file.py"
 set "ICON_URL=%BASE_URL%/app_icon.png"
 
+:: Check for Windows 10 or newer
+for /f "tokens=4-5 delims=. " %%a in ('ver') do (
+    set "major=%%a"
+    set "minor=%%b"
+)
+
+:: Windows 10 has major version 10
+if %major% LSS 10 (
+    echo %red%This installer requires Windows 10 or later.%reset%
+    echo Your Windows version appears to be older than Windows 10.
+    exit /b 1
+)
+
+echo %green%Windows version OK (Windows 10+ detected).%reset%
+
 :: Check Python
 where python >nul 2>nul
 if %errorlevel% neq 0 (
