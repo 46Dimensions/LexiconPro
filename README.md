@@ -31,7 +31,7 @@ Run `vocabularyplus` or `vp`. You can also use the 'Vocabulary Plus' application
 To make a vocabulary JSON file, run `vocabularyplus create` or `vp create`.
 
 ## Reporting bugs
-Go to [Create New Issue](https://github.com/46Dimensions/VocabularyPlus/issues/new). For more information, see [Contributing](CONTRIBUTING.md) and the [Issue Template](issues.md)
+Go to [Create New Issue](https://github.com/46Dimensions/VocabularyPlus/issues/new). For more information, see [Contributing](CONTRIBUTING.md).
 
 ## License
 Licensed under the MIT License — see [LICENSE](LICENSE) for details.
