@@ -110,7 +110,7 @@ Type=Application
 Name=Vocabulary Plus
 Exec=$LAUNCHER
 Icon=$INSTALL_DIR/app_icon.png
-Terminal=false
+Terminal=true
 Categories=Education;
 EOF
 
