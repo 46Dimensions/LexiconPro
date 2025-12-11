@@ -17,6 +17,7 @@ REQ_URL="$BASE_URL/requirements.txt"
 MAIN_URL="$BASE_URL/main.py"
 CREATE_URL="$BASE_URL/create_vocab_file.py"
 ICON_URL="$BASE_URL/app_icon.png"
+README_URL="$BASE_URL/README.md"
 
 check_python() {
     command -v python3 >/dev/null 2>&1 || {
@@ -55,6 +56,7 @@ curl -fsSL "$REQ_URL" -o requirements.txt || { echo "${red}Failed to download re
 curl -fsSL "$MAIN_URL" -o main.py || { echo "${red}Failed to download main.py${reset}"; exit 1; }
 curl -fsSL "$CREATE_URL" -o create_vocab_file.py || { echo "${red}Failed to download create_vocab_file.py${reset}"; exit 1; }
 curl -fsSL "$ICON_URL" -o app_icon.png || { echo "${red}Failed to download icon${reset}"; exit 1; }
+curl -fsSL "$README_URL" -o README.md || { echo "${red}Failed to download README.md${reset}"; exit 1; }
 
 echo "${yellow}Creating virtual environment...${reset}"
 python3 -m venv venv || { echo "${red}Failed to create venv${reset}"; exit 1; }
