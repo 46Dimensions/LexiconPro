@@ -55,7 +55,7 @@ if not errorlevel 1 (
 )
 
 :: Paths + download URLs
-set "BASE_URL=https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/desktop_app"
+set "BASE_URL=https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main"
 set "REQ_URL=%BASE_URL%/requirements.txt"
 set "MAIN_URL=%BASE_URL%/main.py"
 set "CREATE_URL=%BASE_URL%/create_vocab_file.py"
@@ -104,11 +104,12 @@ echo set "APPDIR=%INSTALL_DIR%"
 echo.
 echo if "%%1"=="create" (
 echo     shift
-echo     "%%PY%%" "%%APPDIR%%\create_vocab_file.py" %%*
+echo     "%%PY%%" "%%APPDIR%%\create_vocab_file.py" %%%%*
 echo ) else (
-echo     "%%PY%%" "%%APPDIR%%\main.py" %%*
+echo     "%%PY%%" "%%APPDIR%%\main.py" %%%%*
 echo )
 ) > "%LAUNCHER%"
+echo %green%Launcher created successfully.%reset%
 
 :: Create alias "vp"
 echo @echo off ^& "%LAUNCHER%" %%* > "%BIN_DIR%\vp.cmd"
