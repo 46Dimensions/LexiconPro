@@ -248,10 +248,10 @@ fi
 
 echo
 echo "${green}Vocabulary Plus 1.1.0 installed successfully${reset}"
-echo "  vocabularyplus #main application"
-echo "  vocabularyplus create #to create a new vocabulary file "
-echo "  vp #shortcut for main application "
-echo "  vp create #shortcut to create a new vocabulary file "
+echo "  vocabularyplus # main application"
+echo "  vocabularyplus create # to create a new vocabulary file "
+echo "  vp # shortcut for main application "
+echo "  vp create # shortcut to create a new vocabulary file "
 echo
 echo "If these don't work, make sure ~/.local/bin is in your PATH:"
 echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""

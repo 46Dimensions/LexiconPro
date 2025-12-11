@@ -224,10 +224,10 @@ echo.
 echo %green%Vocabulary Plus 1.1.0 installed successfully!%reset%
 echo.
 echo Now you can run:
-echo   vocabularyplus ::main application
-echo   vocabularyplus create ::to create a new vocabulary file
-echo   vp ::shortcut for main application
-echo   vp create ::shortcut to create a new vocabulary file
+echo   vocabularyplus :: main application
+echo   vocabularyplus create :: to create a new vocabulary file
+echo   vp :: shortcut for main application
+echo   vp create :: shortcut to create a new vocabulary file
 echo.
 echo If commands don't work, add this to PATH:
 echo   %BIN_DIR%
