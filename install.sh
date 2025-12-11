@@ -8,7 +8,7 @@ yellow="\033[33m"
 reset="\033[0m"
 
 echo "${green}====================================${reset}"
-echo "${green}Vocabulary Plus Unix Installer 1.1.0${reset}"
+echo "${green}Vocabulary Plus Unix Installer 1.2.0${reset}"
 echo "${green}====================================${reset}"
 echo
 
@@ -89,7 +89,7 @@ fi
 
 # Handle --version flag
 if [ "\$1" = "--version" ] || [ "\$1" = "-v" ]; then
-    echo 1.1.0
+    echo 1.2.0
     exit 0
 fi
 
@@ -136,7 +136,7 @@ cat > "$UNINSTALLER" <<EOF
 set -e
 
 echo "${green}======================================${reset}"
-echo "${green}Vocabulary Plus Unix Uninstaller 1.1.0${reset}"
+echo "${green}Vocabulary Plus Unix Uninstaller 1.2.0${reset}"
 echo "${green}======================================${reset}"
 
 cd $INSTALL_DIR || { echo "${red}Failed to enter VocabularyPlus directory${reset}"; exit 1; }
@@ -247,7 +247,7 @@ EOF
 fi
 
 echo
-echo "${green}Vocabulary Plus 1.1.0 installed successfully${reset}"
+echo "${green}Vocabulary Plus 1.2.0 installed successfully${reset}"
 echo "  vocabularyplus # main application"
 echo "  vocabularyplus create # to create a new vocabulary file "
 echo "  vp # shortcut for main application "
