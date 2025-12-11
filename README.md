@@ -20,8 +20,8 @@ sh install.sh
 ```
 
 ## Running the script
-In the same directory, run `python main.py`.
-To make a vocabulary JSON file, run `python create_vocab_file.py`.
+Run `vocabularyplus` or `vp`. You can also use the 'Vocabulary Plus' application.   
+To make a vocabulary JSON file, run `vocabularyplus create` or `vp create`.
 
 ## Reporting issues
 Go to [Create New Issue](https://github.com/46Dimensions/VocabularyPlus/issues/new).
