@@ -33,3 +33,19 @@ Released: 7th December 2025
 - Changed blue colour to light cyan for easy readability on a black background
 ### Installation Scripts
 - Added new `vp` alias for the `vocabularyplus` command
+
+## v1.1.0
+Released: 11th December 2025
+### Main
+- Added a summary of the questions answered which shows after Ctrl+C.
+### Installation Scripts
+- Added creation of a desktop app icon which runs the main app.   
+    <ins>Methods</ins>
+    - **Linux:** .desktop file
+    - **macOS:** .app bundle
+    - **Windows:** .lnk file
+- Added an uninstallation script. See [README](README.md) for how to run
+### README
+- Edited running instructions
+- Edited method of installation for Unix
+- Added instructions on uninstallation
