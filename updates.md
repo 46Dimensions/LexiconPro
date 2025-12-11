@@ -32,7 +32,7 @@ Released: 30th November 2025
 [_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.0.1)
 
 ## ~~v1.0.2~~
-**IMPORTANT!!! This version has broken the Semantic Versioning rules. It should be v1.1.0. If you have installed this version, install the latest version as soon as possible.**
+**IMPORTANT!!! This version has broken the Semantic Versioning rules. It should be v1.1.0. If you have installed this version, install the latest version as soon as possible.**   
 Released: 7th December 2025   
 ### Python scripts
 - Changed blue colour to light cyan for easy readability on a black background
