@@ -95,9 +95,7 @@ chmod +x "$LAUNCHER"
 ALIAS="$HOME/.local/bin/vp"
 ln -sf "$LAUNCHER" "$ALIAS"
 
-##############################################
 # LINUX: Create .desktop launcher
-##############################################
 if [ "$(uname)" = "Linux" ]; then
     echo "${yellow}Creating Linux desktop entry...${reset}"
 
@@ -119,9 +117,7 @@ EOF
     echo "${green}Linux app icon installed successfully.${reset}"
 fi
 
-##############################################
 # macOS: Create .app bundle
-##############################################
 if [ "$(uname)" = "Darwin" ]; then
     echo "${yellow}Creating macOS .app bundle...${reset}"
 
