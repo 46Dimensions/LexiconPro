@@ -12,7 +12,7 @@ echo "${green}Vocabulary Plus Unix Installer 1.0.2${reset}"
 echo "${green}====================================${reset}"
 echo
 
-BASE_URL="https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main"
+BASE_URL="https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/desktop_app"
 REQ_URL="$BASE_URL/requirements.txt"
 MAIN_URL="$BASE_URL/main.py"
 CREATE_URL="$BASE_URL/create_vocab_file.py"
@@ -36,7 +36,7 @@ check_python() {
 
 check_python
 
-INSTALL_DIR="$HOME/VocabularyPlus"
+INSTALL_DIR="$PWD/VocabularyPlus"
 
 echo "${yellow}Creating VocabularyPlus directory at $INSTALL_DIR...${reset}"
 mkdir -p "$INSTALL_DIR"
@@ -65,22 +65,26 @@ LAUNCHER="$HOME/.local/bin/vocabularyplus"
 mkdir -p "$(dirname "$LAUNCHER")"
 
 echo "${yellow}Creating launcher script at $LAUNCHER...${reset}"
-cat > "$LAUNCHER" <<'EOF'
-#!/usr/bin/env sh
-if [ -d "$HOME/VocabularyPlus/venv" ]; then
-    BASE_DIR="$HOME/VocabularyPlus"
+cat > "$LAUNCHER" <<EOF
+# Resolve the directory where this launcher script itself lives
+SCRIPT_DIR="$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)"
+
+if [ -d "$INSTALL_DIR/venv" ]; then
+    BASE_DIR="$INSTALL_DIR"
 else
-    echo "ERROR: Could not find VocabularyPlus directory at \$HOME/VocabularyPlus"
+    echo "ERROR: Could not find VocabularyPlus directory at $INSTALL_DIR"
     exit 1
 fi
-PY="$BASE_DIR/venv/bin/python3"
+
+PY="$INSTALL_DIR/venv/bin/python3"
+
 case "$1" in
   create)
     shift
-    "$PY" "$BASE_DIR/create_vocab_file.py" "$@"
+    "$PY" "$INSTALL_DIR/create_vocab_file.py" "$@"
     ;;
   *)
-    "$PY" "$BASE_DIR/main.py" "$@"
+    "$PY" "$INSTALL_DIR/main.py" "$@"
     ;;
 esac
 EOF
@@ -111,9 +115,7 @@ Categories=Education;
 EOF
 
     chmod +x "$DESKTOP_FILE"
-
     update-desktop-database ~/.local/share/applications 2>/dev/null || true
-
     echo "${green}Linux app icon installed successfully.${reset}"
 fi
 
@@ -160,11 +162,10 @@ fi
 
 echo
 echo "${green}Vocabulary Plus 1.0.2 installed successfully${reset}"
-echo "You can now run:"
-echo "  vocabularyplus"
-echo "  vocabularyplus create"
-echo "  vp"
-echo "  vp create"
+echo "  vocabularyplus #main application"
+echo "  vocabularyplus create #to create a new vocabulary file "
+echo "  vp #shortcut for main application "
+echo "  vp create #shortcut to create a new vocabulary file "
 echo
-echo "Make sure ~/.local/bin is in your PATH:"
+echo "If these don't work, make sure ~/.local/bin is in your PATH:"
 echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
