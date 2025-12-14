@@ -7,7 +7,7 @@ Run these commands in your terminal.
 You must have Python 3.10+ installed.
 
 ### Windows
-_Run in Command Prompt (cmd.exe)_ 
+_Run in **Command Prompt** (cmd.exe)_ 
 ```
 curl -fsSL https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main/install.bat -o install.bat
 install.bat
@@ -15,13 +15,13 @@ del /q install.bat
 ```
 
 ### macOS/Linux
-_Run in the 'Terminal' app. The exact name can vary._   
+_Run in the **Terminal** app. The exact name can vary._   
 ```
 curl -fsSL https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main/install.sh | sh
 ```
 
 ## Uninstallation
-_Run in Command Prompt on Windows; Terminal on macOS or Linux (name may vary)._
+_Run in **Command Prompt** on Windows; **Terminal** on macOS or Linux (name may vary)._
 ```
 vocabularyplus uninstall
 ```
