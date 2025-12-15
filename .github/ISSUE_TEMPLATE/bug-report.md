@@ -2,11 +2,11 @@
 name: Bug Report
 about: Create a report to help us fix problems
 title: "[BUG]"
-labels: ''
+labels: 'bug'
 assignees: 46Dimensions
 
 ---
-
+## Issue
 **Describe the bug**
 A clear and concise description of what the bug is.
 
