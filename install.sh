@@ -136,9 +136,9 @@ cat > "$UNINSTALLER" <<EOF
 #!/usr/bin/env sh
 set -e
 
-echo "${green}======================================${reset}"
-echo "${green}Vocabulary Plus Unix Uninstaller 1.2.1${reset}"
-echo "${green}======================================${reset}"
+echo "${green}=========================================${reset}"
+echo "${green}Vocabulary Plus: Unix Uninstaller (1.2.1)${reset}"
+echo "${green}=========================================${reset}"
 
 cd $INSTALL_DIR || { echo "${red}Failed to enter VocabularyPlus directory${reset}"; exit 1; }
 deactivate 2>/dev/null || true
