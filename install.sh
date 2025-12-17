@@ -260,12 +260,23 @@ sh install-vm.sh $INSTALL_DIR/vm || { echo "${red}Failed to install VP VM${reset
 rm install-vm.sh
 echo "${green}Vocabulary Plus Version Manager installed successfully.${reset}"
 
-echo
+# Final message
+echo ""
 echo "${green}Vocabulary Plus 1.2.1 installed successfully${reset}"
-echo "  vocabularyplus # main application"
-echo "  vocabularyplus create # to create a new vocabulary file "
-echo "  vp # shortcut for main application "
-echo "  vp create # shortcut to create a new vocabulary file "
-echo
-echo "If these don't work, make sure ~/.local/bin is in your PATH:"
-echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
+echo ""
+echo "You can run Vocabulary Plus with the following commands:"
+echo "  vocabularyplus           main application"
+echo "  vocabularyplus create    to create a new vocabulary file"
+echo "  vp                       shortcut for main application"
+echo "  vp create                shortcut to create a new vocabulary file"
+echo ""
+echo "To use vp-vm (Vocabulary Plus Version Manager), see its help message:"
+echo "  vp-vm --help"
+echo ""
+echo "To uninstall Vocabulary Plus, run:"
+echo "  vocabularyplus uninstall"
+
+echo ""
+echo "If these don't work, add this to PATH:"
+echo "  $HOME/.local/bin"
+echo ""
