@@ -18,7 +18,7 @@ MAIN_URL="$BASE_URL/main.py"
 CREATE_URL="$BASE_URL/create_vocab_file.py"
 ICON_URL="$BASE_URL/app_icon.png"
 README_URL="$BASE_URL/README.md"
-VERSION_URL="$BASE_URL/version.txt"
+VP_VM_INSTALLER_URL="https://raw.githubusercontent.com/46Dimensions/vp-vm/main/install-vm.sh"
 
 check_python() {
     command -v python3 >/dev/null 2>&1 || {
@@ -246,6 +246,19 @@ EOF
 
     echo "${green}macOS .app installed: $APP_DIR${reset}"
 fi
+
+# Install Vocabulary Plus Version Manager
+echo "${yellow}Installing Vocabulary Plus Version Manager...${reset}"
+# Download file
+echo "${yellow}Downloading installer...${reset}"
+curl -fsSL "$VP_VM_INSTALLER_URL" -o install-vm.sh || { echo "${red}Failed to download VP VM installer${reset}"; exit 1; }
+echo "${green}Download complete.${reset}"
+# Run installer
+echo "${yellow}Running VP VM installer...${reset}"
+sh install-vm.sh $INSTALL_DIR/vm || { echo "${red}Failed to install VP VM${reset}"; exit 1; }
+# Remove installer
+rm install-vm.sh
+echo "${green}Vocabulary Plus Version Manager installed successfully.${reset}"
 
 echo
 echo "${green}Vocabulary Plus 1.2.1 installed successfully${reset}"
