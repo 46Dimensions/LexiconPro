@@ -173,10 +173,20 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 echo ""
+echo "${yellow}Running Vocabulary Plus Version Manager Uninstaller
+# Download the vp-vm uninstallation script if it doesn't exist
+if [ ! -f "$INSTALL_DIR/vm/uninstall" ]; then
+    curl -fsSL https://raw.githubusercontent.com/46Dimensions/vp-vm/main/uninstall.sh -o $INSTALL_DIR/vm/uninstall.sh
+
+# Run the vp-vm uninstallation script
+sh $INSTALL_DIR/vm/uninstall.sh
+echo "${green}VP VM uninstalled successfully${reset}"
+
+echo ""
 echo "${green}Uninstallation complete.${reset}"
 echo "${yellow}If you found any errors in Vocabulary Plus, please report them at https://github.com/46Dimensions/VocabularyPlus/issues ${reset}"
 # Remove VocabularyPlus directory
-cd .. || { echo "${red}Failed to return to parent directory${reset}"; exit 1; }
+cd .. || { exit 1; }
 rm -rf VocabularyPlus 2>/dev/null || true
 rm install.sh 2>/dev/null || true
 EOF
