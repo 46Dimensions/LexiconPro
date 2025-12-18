@@ -173,7 +173,7 @@ if [ "$(uname)" = "Darwin" ]; then
 fi
 
 echo ""
-echo "${yellow}Running Vocabulary Plus Version Manager Uninstaller
+echo "${yellow}Running Vocabulary Plus Version Manager Uninstaller${reset}"
 # Download the vp-vm uninstallation script if it doesn't exist
 if [ ! -f "$INSTALL_DIR/vm/uninstall" ]; then
     curl -fsSL https://raw.githubusercontent.com/46Dimensions/vp-vm/main/uninstall.sh -o $INSTALL_DIR/vm/uninstall.sh
