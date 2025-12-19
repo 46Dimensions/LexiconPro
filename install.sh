@@ -165,7 +165,7 @@ echo "${green}VocabularyPlus files & directories removed.${reset}"
 echo "${yellow}Removing launchers...${reset}"
 rm -f "$HOME/.local/bin/vocabularyplus" 2>/dev/null || true
 rm -f "$HOME/.local/bin/vp" 2>/dev/null || true
-rm -f "$HOME/.local/bin/vp-vm 2>/dev/null || true
+rm -f "$HOME/.local/bin/vp-vm 2>/dev/null" || true
 echo "${green}Launchers removed.${reset}"
 
 # Remove Linux .desktop entry
