@@ -7,6 +7,16 @@ green="\033[32m"
 yellow="\033[33m"
 reset="\033[0m"
 
+# Disable stdout if $1 is -s or --silent
+SILENT=0
+case "$1" in
+  -s|--silent) SILENT=1 ;;
+esac
+
+if [ "$SILENT" -eq 1 ]; then
+  exec >/dev/null
+fi
+
 echo "${green}=======================================${reset}"
 echo "${green}Vocabulary Plus: Unix Installer (1.2.1)${reset}"
 echo "${green}=======================================${reset}"
