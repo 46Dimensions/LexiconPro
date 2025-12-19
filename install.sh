@@ -136,6 +136,22 @@ cat > "$UNINSTALLER" <<EOF
 #!/usr/bin/env sh
 set -e
 
+# Disable stdout if '\$1' is -s or --silent
+SILENT=0
+case "\$1" in
+  -s|--silent) SILENT=1 ;;
+esac
+
+if [ "\$SILENT" -eq 1 ]; then
+  exec >/dev/null
+fi
+
+# Don't uninstall vp-vm if running from that update script ('\$2' is --vp-only)
+VP_ONLY=0
+case "\$2" in
+  --vp-only) VP_ONLY=2 ;;
+esac
+
 echo "${green}=========================================${reset}"
 echo "${green}Vocabulary Plus: Unix Uninstaller (1.2.1)${reset}"
 echo "${green}=========================================${reset}"
@@ -172,16 +188,23 @@ if [ "$(uname)" = "Darwin" ]; then
     echo "${green}macOS .app bundle removed.${reset}"
 fi
 
-echo ""
-echo "${yellow}Running Vocabulary Plus Version Manager Uninstaller${reset}"
-# Download the vp-vm uninstallation script if it doesn't exist
-if [ ! -f "$INSTALL_DIR/vm/uninstall" ]; then
-    curl -fsSL https://raw.githubusercontent.com/46Dimensions/vp-vm/main/uninstall.sh -o $INSTALL_DIR/vm/uninstall.sh
-fi
+# Only run the vp-vm uninstaller if VP_ONLY is set to 0
+if [ \$VP_ONLY -eq 0 ]; then
+    echo ""
+    echo "${yellow}Running Vocabulary Plus Version Manager Uninstaller${reset}"
+    # Download the vp-vm uninstallation script if it doesn't exist
+    if [ ! -f "$INSTALL_DIR/vm/uninstall" ]; then
+        curl -fsSL https://raw.githubusercontent.com/46Dimensions/vp-vm/main/uninstall.sh -o $INSTALL_DIR/vm/uninstall.sh
+    fi
 
-# Run the vp-vm uninstallation script
-sh $INSTALL_DIR/vm/uninstall.sh
-echo "${green}VP VM uninstalled successfully${reset}"
+    # Run the vp-vm uninstallation script
+    if [ \$SILENT -eq 1 ]; then
+        sh $INSTALL_DIR/vm/uninstall.sh -s
+    else
+        sh $INSTALL_DIR/vm/uninstall.sh
+    fi
+    echo "${green}VP VM uninstalled successfully${reset}"
+fi
 
 echo ""
 echo "${green}Uninstallation complete.${reset}"
