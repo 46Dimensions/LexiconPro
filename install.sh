@@ -121,7 +121,7 @@ fi
 # Handle uninstall subcommand
 if [ "\$1" = "uninstall" ]; then
     echo "${yellow}Running uninstaller...${reset}"
-    if [ "$2" = "-s" ] || [ "$1" = "--silent" ]; then
+    if [ "\$2" = "-s" ] || [ "\$2" = "--silent" ]; then
         /usr/bin/env sh $INSTALL_DIR/uninstall -s
     else
         /usr/bin/env sh $INSTALL_DIR/uninstall
