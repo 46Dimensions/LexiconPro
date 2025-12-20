@@ -108,13 +108,13 @@ fi
 if [ "\$1" = "--help" ]; then
     echo "Usage: vocabularyplus [create] [options]"
     echo "Commands:"
-    echo "  create        Create a new vocabulary file"
-    echo "  uninstall     Uninstall Vocabulary Plus"
+    echo "  create                     Create a new vocabulary file"
+    echo "  uninstall [-s|--silent]    Uninstall Vocabulary Plus. Silent mode (-s|--silent) produces no output."
     echo "Options:"
-    echo "  -v, --version   Show version information"
-    echo "  --help          Show this help message"
+    echo "  -v, --version              Show version information"
+    echo "  --help                     Show this help message"
     echo "Alias:"
-    echo "  vp            Shortcut for vocabularyplus"
+    echo "  vp                         Shortcut for vocabularyplus"
     exit 0
 fi
 
