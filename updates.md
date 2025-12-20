@@ -110,9 +110,10 @@ Released: 15th December 2025
 
 [_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.2.1)
 
-## v1.3.0
+## v1.3.0 Beta
 
-Released: 17th December 2025
+Released: 20th December 2025  
+Version 1.3.0 is currently in Beta, so it is unstable.
 
 ### Installation Scripts
 
@@ -158,5 +159,27 @@ Released: 17th December 2025
   - Headers are now bold high-intensity cyan.
   - All other colours are high-intensity as well
 
+#### macOS/Linux Installer
+
 - Added integration of [Vocabulary Plus Version Manager](https://github.com/46Dimensions/vp-vm) (`vp-vm`)
   - See [`vp-vm`'s README](https://github.com/46Dimensions/vp-vm/blob/main/README.md) for more information.
+  - It will be available on Windows in 2026, in version 1.3.0.
+
+### Version
+
+- Added a `version.txt` file for use in `vp-vm`
+
+### App Icon
+
+- Changed the icon for the desktop app to
+
+[![The Vocabulary Plus logo](/app_icon.png "Vocabulary Plus logo")](/app_icon.png)
+
+### Markdown Documentation
+
+- Improved syntax to comply with [markdownlint](https://github.com/DavidAnson/markdownlint) rules
+  - Added a `.markdownlint.json` file to configure markdownlint
+
+#### README
+
+- Added the [Vocabulary Plus logo](/readme_icon.png) to the top of [the file](/README.md)
