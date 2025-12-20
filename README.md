@@ -1,5 +1,7 @@
 # Vocabulary Plus
 
+![The Vocabulary Plus logo with the words 'Vocabulary Plus' to the right of it](/readme_icon.png "Vocabulary Plus logo")
+
 A Python-based foreign vocabulary learning tool.  
 [View updates](updates.md)
 
