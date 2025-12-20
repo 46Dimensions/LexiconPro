@@ -1,6 +1,7 @@
 # Contributing to Vocabulary Plus
+Welcome to Vocabulary Plus!  
+We appreciate that you are interested in contributing to this repository.  
 
-Welcome to Vocabulary Plus! We appreciate that you are interested in contributing to this repository.  
 You can contribute to it by creating an issue.
 
 ## Creating Issues
@@ -20,10 +21,12 @@ Instead of a "+1" or "-1" comment to vote for a feature request, use a reaction.
 If you cannot find a similar issue/feature request, create a new issue with the guidelines below.
 
 ### Creating a good issue
+Create a single issue per problem and feature request. Do not enumerate multiple bugs or feature requests in the same issue.
 
-Create a single issue per problem and feature request. Do not enumerate multiple bugs or feature requests in the same issue.  
-Do not add your issue as a comment to an existing issue.  
-The more information you can provide, the more likely someone will be successful at reproducing the issue and finding a fix.  
+Do not add your issue as a comment to an existing issue.
+
+The more information you can provide, the more likely someone will be successful at reproducing the issue and finding a fix.
+
 A good issue should include:
 
 * Your OS (Windows/macOS/Linux)

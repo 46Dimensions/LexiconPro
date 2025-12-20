@@ -8,18 +8,28 @@ yellow="\033[93m"
 cyan="\033[1;96m"
 reset="\033[0m"
 
+# Disable stdout if $1 is -s or --silent
+SILENT=0
+case "$1" in
+  -s|--silent) SILENT=1 ;;
+esac
+
+if [ "$SILENT" -eq 1 ]; then
+  exec >/dev/null
+fi
+
 echo "${cyan}=======================================${reset}"
 echo "${cyan}Vocabulary Plus: Unix Installer (1.2.1)${reset}"
 echo "${cyan}=======================================${reset}"
 echo
 
-BASE_URL="https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main"
+BASE_URL="https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/vp-vm"
 REQ_URL="$BASE_URL/requirements.txt"
 MAIN_URL="$BASE_URL/main.py"
 CREATE_URL="$BASE_URL/create_vocab_file.py"
 ICON_URL="$BASE_URL/app_icon.png"
 README_URL="$BASE_URL/README.md"
-VERSION_URL="$BASE_URL/version.txt"
+VP_VM_INSTALLER_URL="https://raw.githubusercontent.com/46Dimensions/vp-vm/main/install-vm.sh"
 
 check_python() {
     command -v python3 >/dev/null 2>&1 || {
@@ -99,21 +109,25 @@ fi
 if [ "\$1" = "--help" ]; then
     echo "Usage: vocabularyplus [create] [options]"
     echo "Commands:"
-    echo "  create        Create a new vocabulary file"
-    echo "  uninstall     Uninstall Vocabulary Plus"
+    echo "  create                     Create a new vocabulary file"
+    echo "  uninstall [-s|--silent]    Uninstall Vocabulary Plus. Silent mode (-s|--silent) produces no output."
     echo "Options:"
-    echo "  -v, --version   Show version information"
-    echo "  --help          Show this help message"
+    echo "  -v, --version              Show version information"
+    echo "  --help                     Show this help message"
     echo "Alias:"
-    echo "  vp            Shortcut for vocabularyplus"
+    echo "  vp                         Shortcut for vocabularyplus"
     exit 0
 fi
 
 # Handle uninstall subcommand
 if [ "\$1" = "uninstall" ]; then
-    echo "${yellow}Running uninstaller...${reset}"
-    /usr/bin/env sh $INSTALL_DIR/uninstall
-    exit 0
+    if [ "\$2" = "-s" ] || [ "\$2" = "--silent" ]; then
+        /usr/bin/env sh $INSTALL_DIR/uninstall "\$2"
+    else
+        echo "${yellow}Running uninstaller...${reset}"
+        /usr/bin/env sh $INSTALL_DIR/uninstall
+    fi
+    exit \$?
 fi
 
 # Handle create subcommand
@@ -137,6 +151,16 @@ cat > "$UNINSTALLER" <<EOF
 #!/usr/bin/env sh
 set -e
 
+# Disable stdout if '\$1' is -s or --silent
+SILENT=0
+case "\$1" in
+  -s|--silent) SILENT=1 ;;
+esac
+
+if [ "\$SILENT" -eq 1 ]; then
+  exec >/dev/null
+fi
+
 echo "${green}=========================================${reset}"
 echo "${green}Vocabulary Plus: Unix Uninstaller (1.2.1)${reset}"
 echo "${green}=========================================${reset}"
@@ -156,6 +180,7 @@ echo "${green}VocabularyPlus files & directories removed.${reset}"
 echo "${yellow}Removing launchers...${reset}"
 rm -f "$HOME/.local/bin/vocabularyplus" 2>/dev/null || true
 rm -f "$HOME/.local/bin/vp" 2>/dev/null || true
+rm -f "$HOME/.local/bin/vp-vm 2>/dev/null" || true
 echo "${green}Launchers removed.${reset}"
 
 # Remove Linux .desktop entry
@@ -177,7 +202,7 @@ echo ""
 echo "${green}Uninstallation complete.${reset}"
 echo "${yellow}If you found any errors in Vocabulary Plus, please report them at https://github.com/46Dimensions/VocabularyPlus/issues ${reset}"
 # Remove VocabularyPlus directory
-cd .. || { echo "${red}Failed to return to parent directory${reset}"; exit 1; }
+cd .. || { exit 1; }
 rm -rf VocabularyPlus 2>/dev/null || true
 rm install.sh 2>/dev/null || true
 EOF
@@ -248,12 +273,37 @@ EOF
     echo "${green}macOS .app installed: $APP_DIR${reset}"
 fi
 
-echo
+# Install Vocabulary Plus Version Manager
+echo "${yellow}Installing Vocabulary Plus Version Manager...${reset}"
+# Download file
+echo "${yellow}Downloading installer...${reset}"
+curl -fsSL "$VP_VM_INSTALLER_URL" -o install-vm.sh || { echo "${red}Failed to download VP VM installer${reset}"; exit 1; }
+echo "${green}Download complete.${reset}"
+# Run installer
+echo "${yellow}Running VP VM installer...${reset}"
+sh install-vm.sh $INSTALL_DIR/vm || { echo "${red}Failed to install VP VM${reset}"; exit 1; }
+# Remove installer
+rm install-vm.sh
+
+# Set Vocabulary Plus version file
+echo "1.2.1" > $INSTALL_DIR/vm/versions/vp/current.txt
+
+# Final message
+echo ""
 echo "${green}Vocabulary Plus 1.2.1 installed successfully${reset}"
-echo "  vocabularyplus # main application"
-echo "  vocabularyplus create # to create a new vocabulary file "
-echo "  vp # shortcut for main application "
-echo "  vp create # shortcut to create a new vocabulary file "
-echo
-echo "If these don't work, make sure ~/.local/bin is in your PATH:"
-echo "  export PATH=\"\$HOME/.local/bin:\$PATH\""
+echo ""
+echo "You can run Vocabulary Plus with the following commands:"
+echo "  vocabularyplus           main application"
+echo "  vocabularyplus create    to create a new vocabulary file"
+echo "  vp                       shortcut for main application"
+echo "  vp create                shortcut to create a new vocabulary file"
+echo ""
+echo "To use vp-vm (Vocabulary Plus Version Manager), see its help message:"
+echo "  vp-vm --help"
+echo ""
+echo "To uninstall Vocabulary Plus, run:"
+echo "  vocabularyplus uninstall"
+echo ""
+echo "If these don't work, add this to PATH:"
+echo "  $HOME/.local/bin"
+echo ""

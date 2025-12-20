@@ -222,13 +222,19 @@ echo %green%Start Menu shortcut created successfully.%reset%
 
 :: Final message
 echo.
-echo %green%Vocabulary Plus 1.2.1 installed successfully!%reset%
+echo %green%Vocabulary Plus 1.2.1 installed successfully%reset%
 echo.
-echo Now you can run:
-echo   vocabularyplus :: main application
-echo   vocabularyplus create :: to create a new vocabulary file
-echo   vp :: shortcut for main application
-echo   vp create :: shortcut to create a new vocabulary file
+echo You can run Vocabulary Plus with the following commands:
+echo   vocabularyplus           main application
+echo   vocabularyplus create    to create a new vocabulary file
+echo   vp                       shortcut for main application
+echo   vp create                shortcut to create a new vocabulary file
+echo.
+echo To use vp-vm (Vocabulary Plus Version Manager), see its help message:
+echo   vp-vm --help
+echo.
+echo To uninstall Vocabulary Plus, run:
+echo   vocabularyplus uninstall
 echo.
 echo If commands don't work, add this to PATH:
 echo   %BIN_DIR%
