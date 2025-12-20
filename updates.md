@@ -183,3 +183,5 @@ Version 1.3.0 is currently in Beta, so it is unstable.
 #### README
 
 - Added the [Vocabulary Plus logo](/readme_icon.png) to the top of [the file](/README.md)
+
+[_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.3.0-beta)
