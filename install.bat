@@ -3,14 +3,15 @@ setlocal ENABLEDELAYEDEXPANSION
 
 :: Enable ANSI escape sequences (Windows 10+ only)
 for /f %%A in ('echo prompt $E ^| cmd') do set "ESC=%%A"
-set "red=%ESC%[31m"
-set "green=%ESC%[32m"
-set "yellow=%ESC%[33m"
+set "red=%ESC%[91m"
+set "green=%ESC%[92m"
+set "yellow=%ESC%[93m"
+set "cyan=%ESC%[1;96m"
 set "reset=%ESC%[0m"
 
-echo %green%==========================================%reset%
-echo %green%Vocabulary Plus: Windows Installer (1.2.1)%reset%
-echo %green%==========================================%reset%
+echo %cyan%==========================================%reset%
+echo %cyan%Vocabulary Plus: Windows Installer (1.2.1)%reset%
+echo %cyan%==========================================%reset%
 echo.
 
 :: Windows 10+ Check
