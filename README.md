@@ -3,7 +3,7 @@
 ![The Vocabulary Plus logo with the words 'Vocabulary Plus' to the right of it](https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/1.3.0/readme_icon.png)
 
 A Python-based foreign vocabulary learning tool.  
-[View updates](updates.md)
+[View updates](UPDATES.md)
 
 ## Installation
 
