@@ -10,7 +10,7 @@ set "cyan=%ESC%[1;96m"
 set "reset=%ESC%[0m"
 
 echo %cyan%===============================================%reset%
-echo %cyan%Vocabulary Plus: Windows Installer (1.3.0 Beta)%reset%
+echo %cyan%Vocabulary Plus: Windows Installer (1.3.0)%reset%
 echo %cyan%===============================================%reset%
 echo.
 
