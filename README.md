@@ -1,13 +1,13 @@
 # Vocabulary Plus
 
-![The Vocabulary Plus logo with the words 'Vocabulary Plus' to the right of it](https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/1.3.0/readme_icon.png)
+![The Vocabulary Plus logo with the words 'Vocabulary Plus' to the right of it](https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main/readme_icon.png)
 
 A Python-based foreign vocabulary learning tool.  
 [View updates](UPDATES.md)
 
 ## Installation
 
-Run these commands in your terminal to install version 1.3.0.  
+Run these commands in your terminal.  
 You must have Python 3.10+ installed.
 
 ### Windows
@@ -15,8 +15,8 @@ You must have Python 3.10+ installed.
 _Run in **Command Prompt** (cmd.exe)_
 
 ``` batch
-curl -fsSL https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/1.3.0/install.bat -o install.bat
-install.bat
+curl -fsSL https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main/install.bat -o install.bat
+CALL install.bat
 del /q install.bat
 ```
 
@@ -25,9 +25,8 @@ del /q install.bat
 _Run in the **Terminal** app. The exact name can vary._
 
 ``` shell
-curl -fsSL https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/1.3.0/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main/install.sh | sh
 ```
-**Install Version 1.3.0 pre-release [here](https://github.com/46Dimensions/VocabularyPlus/tree/1.3.0)!**
 
 ## Uninstallation
 
@@ -41,6 +40,10 @@ vocabularyplus uninstall
 
 Run `vocabularyplus` or `vp`. You can also use the 'Vocabulary Plus' application.  
 To make a vocabulary JSON file, run `vocabularyplus create` or `vp create`.
+
+## Using Vocabulary Plus Version Manager
+
+See [`vp-vm`'s README](https://github.com/46Dimensions/vp-vm/blob/main/README.md) for information on how to use Vocabulary Plus Version Manager.
 
 ## Reporting bugs
 
