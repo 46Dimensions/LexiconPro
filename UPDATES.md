@@ -1,6 +1,6 @@
 # Vocabulary Plus - Updates
 
-Vocabulary Plus is regularly updated. Below is a list of recent updates (v1.0.0 to v1.3.0 Beta).
+Vocabulary Plus is regularly updated. Below is a list of recent updates (v1.0.0 to v1.3.1).
 
 ## v1.0.0
 
@@ -163,7 +163,7 @@ Version 1.3.0 is currently in Beta, so it is unstable.
 
 - Added integration of [Vocabulary Plus Version Manager](https://github.com/46Dimensions/vp-vm) (`vp-vm`)
   - See [`vp-vm`'s README](https://github.com/46Dimensions/vp-vm/blob/main/README.md) for more information.
-  - It will be available on Windows in 2026, in version 1.3.0.
+  - It will be available on Windows in 2026, in version 1.3.1.
 
 ### Version file
 
