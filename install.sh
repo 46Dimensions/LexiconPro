@@ -18,12 +18,12 @@ if [ "$SILENT" -eq 1 ]; then
   exec >/dev/null
 fi
 
-echo "${cyan}============================================${reset}"
-echo "${cyan}Vocabulary Plus: Unix Installer (1.3.0)${reset}"
-echo "${cyan}============================================${reset}"
+echo "${cyan}=======================================${reset}"
+echo "${cyan}Vocabulary Plus: Unix Installer (1.3.1)${reset}"
+echo "${cyan}=======================================${reset}"
 echo
 
-BASE_URL="https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/1.3.0"
+BASE_URL="https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main"
 REQ_URL="$BASE_URL/requirements.txt"
 MAIN_URL="$BASE_URL/main.py"
 CREATE_URL="$BASE_URL/create_vocab_file.py"
@@ -99,7 +99,7 @@ fi
 
 # Handle --version flag
 if [ "\$1" = "--version" ] || [ "\$1" = "-v" ]; then
-    echo 1.3.0
+    echo 1.3.1
     exit 0
 fi
 
@@ -160,7 +160,7 @@ if [ "\$SILENT" -eq 1 ]; then
 fi
 
 echo "${green}==============================================${reset}"
-echo "${green}Vocabulary Plus: Unix Uninstaller (1.3.0)${reset}"
+echo "${green}Vocabulary Plus: Unix Uninstaller (1.3.1)${reset}"
 echo "${green}==============================================${reset}"
 
 cd $INSTALL_DIR || { echo "${red}Failed to enter VocabularyPlus directory${reset}"; exit 1; }
@@ -284,11 +284,11 @@ sh install-vm.sh $INSTALL_DIR/vm || { echo "${red}Failed to install VP VM${reset
 rm install-vm.sh
 
 # Set Vocabulary Plus version file
-echo "1.3.0" > $INSTALL_DIR/vm/versions/vp/current.txt
+echo "1.3.1" > $INSTALL_DIR/vm/versions/vp/current.txt
 
 # Final message
 echo ""
-echo "${green}Vocabulary Plus 1.3.0 installed successfully${reset}"
+echo "${green}Vocabulary Plus 1.3.1 installed successfully${reset}"
 echo ""
 echo "You can run Vocabulary Plus with the following commands:"
 echo "  vocabularyplus           main application"

@@ -9,9 +9,9 @@ set "yellow=%ESC%[93m"
 set "cyan=%ESC%[1;96m"
 set "reset=%ESC%[0m"
 
-echo %cyan%===============================================%reset%
-echo %cyan%Vocabulary Plus: Windows Installer (1.3.0)%reset%
-echo %cyan%===============================================%reset%
+echo %cyan%==========================================%reset%
+echo %cyan%Vocabulary Plus: Windows Installer (1.3.1)%reset%
+echo %cyan%==========================================%reset%
 echo.
 
 :: Windows 10+ Check
@@ -56,9 +56,9 @@ if not errorlevel 1 (
 )
 
 :: Paths + download URLs
-set "BASE_URL=https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/1.3.0"
+set "BASE_URL=https://raw.githubusercontent.com/46Dimensions/VocabularyPlus/main"
 set "REQ_URL=%BASE_URL%/requirements.txt"
-set "1.3.0_URL=%BASE_URL%/main.py"
+set "1.3.1_URL=%BASE_URL%/main.py"
 set "CREATE_URL=%BASE_URL%/create_vocab_file.py"
 set "ICON_URL=%BASE_URL%/app_icon.png"
 set "VP_VM_INSTALLER_URL=https://raw.githubusercontent.com/46Dimensions/vp-vm/main/install-vm.bat"
@@ -121,9 +121,9 @@ echo if "%%1"=="--help" (
 echo.
 :: Version option
 if "%1"=="--version" (
-  echo 1.3.0
+  echo 1.3.1
 ) else if "%1"=="-v" (
-  echo 1.3.0
+  echo 1.3.1
 )
 echo.
 :: Handle "uninstall" subcommand
@@ -156,7 +156,7 @@ echo @echo off
 echo setlocal ENABLEDELAYEDEXPANSION
 
 echo echo %green%=================================================%reset%
-echo echo %green%Vocabulary Plus: Windows Uninstaller (1.3.0)%reset%
+echo echo %green%Vocabulary Plus: Windows Uninstaller (1.3.1)%reset%
 echo echo %green%=================================================%reset%
 echo echo.
 
@@ -231,11 +231,11 @@ del /q install-vm.bat
 
 :: Create version directory and file if needed
 if not exist "%INSTALL_DIR%\vm\versions\vp" mkdir "%INSTALL_DIR%\vm\versions\vp"
-echo 1.3.0 > "%INSTALL_DIR%\vm\versions\vp\current.txt"
+echo 1.3.1 > "%INSTALL_DIR%\vm\versions\vp\current.txt"
 
 :: Final message
 echo.
-echo %green%Vocabulary Plus 1.3.0 installed successfully%reset%
+echo %green%Vocabulary Plus 1.3.1 installed successfully%reset%
 echo.
 echo You can run Vocabulary Plus with the following commands:
 echo   vocabularyplus           main application
