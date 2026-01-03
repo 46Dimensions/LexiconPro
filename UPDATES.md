@@ -113,7 +113,7 @@ Released: 15th December 2025
 ## v1.3.0 Beta
 
 Released: 20th December 2025  
-Version 1.3.0 is currently in Beta, so it is unstable.
+v1.3.0 Beta is no longer available to be viewed; the changes can only be seen as part of v1.3.0.
 
 ### Installation Scripts
 
@@ -184,8 +184,6 @@ Version 1.3.0 is currently in Beta, so it is unstable.
 
 - Added the [Vocabulary Plus logo](/readme_icon.png) to the top of [the file](/README.md)
 
-[_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.3.0-beta)
-
 ## v1.3.0 (Stable)
 
 Released: 1st January 2026  
@@ -213,6 +211,8 @@ This version contains all of the changes from v1.3.0 Beta and some more (below).
 
 - Renamed from version.txt to VERSION.txt
 
+[_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.3.0)
+
 ## v1.3.1
 
 Released: 3rd January 2026
@@ -226,3 +226,23 @@ Previously, it used branch `1.3.0`, which, after deletion, did not work, so it h
 - Fixed header formatting.
 The `===` above and below the title were too long,
 because they had not been shortened when the version was changed from '1.3.0 Beta' to '1.3.0'.
+
+### Markdown
+
+#### Update Notes
+
+- Removed _View on GitHub_ link from v1.3.0 Beta and added it to v1.3.0
+- Added note about v1.3.0 Beta being deleted
+
+#### Contribution Instructions
+
+- Improved formatting and reduced line length to under 100 characters
+- Fixed branch name in link to bug report issue template
+
+#### Bug Report Issue Template
+
+- Improved formatting
+- Moved Details section to a `<details>` HTML tag
+  - Edited markdownlint configuration to allow the `<details>` tag
+  
+[_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.3.1)
