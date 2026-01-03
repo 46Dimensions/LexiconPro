@@ -9,6 +9,7 @@ You can contribute to it by creating an issue.
 
 Have you found a reproducible problem in Vocabulary Plus or have a request for a feature?
 Use an issue to tell us.
+
 You can create a new issue on the [Vocabulary Plus Issues page](https://github.com/46Dimensions/VocabularyPlus/issues/new).
 Below are guidelines on how to do this effectively.
 
@@ -26,10 +27,11 @@ If you cannot find a similar issue/feature request, create a new issue with the 
 
 ### Creating a good issue
 
-Create a single issue per problem and feature request.
-Do not enumerate multiple bugs or feature requests in the same issue.
+**Do** only create a single issue per problem and feature request.
 
-Do not add your issue as a comment to an existing issue.
+**Do not** enumerate multiple bugs or feature requests in the same issue.
+
+**Do not** add your issue as a comment to an existing issue.
 
 The more information you can provide,
 the more likely a developer will be successful at reproducing the issue and finding a fix.
