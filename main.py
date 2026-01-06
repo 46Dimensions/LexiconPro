@@ -34,10 +34,10 @@ def on_keyboard_interrupt(summary: str) -> None:
         :param summary: The summary to print before exiting
         :type summary: str
     """
-    if summary:
-        print("\n" + summary)
+    print("\n" + summary)
 
     print(f"{Fore.LIGHTGREEN_EX}Thank you for using Vocabulary Plus. Goodbye!{Style.RESET_ALL}")
+    time.sleep(3)
     sys.exit(0)
 
 def get_jsons(dir: str) -> list:
