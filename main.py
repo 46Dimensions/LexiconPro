@@ -2,7 +2,6 @@
 from typing import Tuple, Dict, Optional
 from pathlib import Path
 from colorama import init, Cursor, ansi, Fore, Style
-import platform
 import random
 import json
 import time
