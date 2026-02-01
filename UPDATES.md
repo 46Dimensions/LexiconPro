@@ -268,3 +268,5 @@ Released: 1st February 2026
 ## Update Log
 
 - Removed versions older than 3 months (v1.0.0 and v1.0.1)
+
+[_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.4.0)
