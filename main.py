@@ -513,12 +513,14 @@ def main() -> None:
             Filename (relative to `JSON_DIR`) of the JSON file that contains the
             `words` mapping and language metadata.
         """
-        nonlocal user_answers, correct_answers
+        nonlocal user_answers, correct_answers, question_number
         # Build the absolute path to the JSON file.
         json_path = os.path.join(JSON_DIR, vocab_file)
          
         # Generate a random question.
         question_text, question_word, word_location = get_question(json_path)
+
+        dynamic_print(f"\n{Fore.YELLOW}Question {question_number}{Style.RESET_ALL}")
 
         # Prompt the user and capture their answer.
         user_answer = dynamic_input(f"{Fore.MAGENTA}{question_text} {Style.RESET_ALL}", summary=get_summary(user_answers, correct_answers))
@@ -542,7 +544,8 @@ def main() -> None:
 
         # Pause briefly so the user can read the feedback, then clean up the terminal lines that were printed for the question/answer.
         time.sleep(3)
-        clear_lines(2)
+        clear_lines(3)
+        question_number += 1
 
     # Store user answers and correct answers for summary
     correct_answers = list()
@@ -574,11 +577,9 @@ def main() -> None:
         print(f"{Fore.YELLOW}Unable to locate the selected vocabulary file.{Style.RESET_ALL}")
         sys.exit(1)
 
-    # --------------------------- Question UI ---------------------------
-    print(f"\n{Fore.YELLOW}Question{Style.RESET_ALL}")
-
     # --------------------------- Loop ----------------------------------
     try:
+        question_number = 1
         while True:
             ask_question(vocab_file)
     except KeyboardInterrupt:
