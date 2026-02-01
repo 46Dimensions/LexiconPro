@@ -293,10 +293,19 @@ def get_summary(user_answers: list, correct_answers: list) -> str:
         else:
             incorrect += 1
 
-    percentage = correct / total_questions * 100
+    try:
+        percentage = correct / total_questions * 100
+    except:
+        percentage = -1
+    title = f"{Fore.CYAN}Quiz Summary{Style.RESET_ALL}"
+    questions_attempted = f"Questions Attempted: {total_questions}"
+    correct_answers_text = f"{Fore.GREEN}Correct Answers: {correct}{Style.RESET_ALL}"
+    incorrect_answers_text = f"{Style.RESET_ALL}\n{Fore.RED}Incorrect Answers: {incorrect}{Style.RESET_ALL}"
+    not_answered_text = f"{Fore.YELLOW}Not Answered: {not_answered}{Style.RESET_ALL}"
+    percentage_text = f"{Fore.CYAN}Percentage: {percentage:.0f}%{Style.RESET_ALL}"
 
     # Format the summary
-    summary = f"\n{Fore.CYAN}Quiz Summary{Style.RESET_ALL}\nQuestions Attempted: {total_questions}\n{Fore.GREEN}Correct Answers: {correct}{Style.RESET_ALL}\n{Fore.RED}Incorrect Answers: {incorrect}{Style.RESET_ALL}\n{Fore.YELLOW}Not Answered: {not_answered}{Style.RESET_ALL}\n{Fore.GREEN if percentage >= 50 else Fore.RED}Percentage: {percentage:.0f}%{Style.RESET_ALL}"
+    summary = f"\n{title}\n{questions_attempted}\n{correct_answers_text}{incorrect_answers_text}\n{not_answered_text}\n{percentage_text if percentage > -1 else ""}\n"
 
     return summary
 
