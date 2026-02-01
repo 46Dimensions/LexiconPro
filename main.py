@@ -37,7 +37,7 @@ def on_keyboard_interrupt(summary: str) -> None:
     print("\n" + summary)
 
     print(f"{Fore.LIGHTGREEN_EX}Thank you for using Vocabulary Plus. Goodbye!{Style.RESET_ALL}")
-    time.sleep(3)
+    time.sleep(1)
     sys.exit(0)
 
 def get_jsons(dir: str) -> list:
