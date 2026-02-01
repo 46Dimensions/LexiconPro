@@ -1,66 +1,7 @@
 # Vocabulary Plus - Updates
 
-Vocabulary Plus is regularly updated. Below is a list of recent updates (v1.0.0 to v1.3.1).
-
-## v1.0.0
-
-Released: 29th November 2025
-
-### All Python files
-
-[main.py](main.py) and [create_vocab_file.py](create_vocab_file.py)
-
-- Added coloured output with `colorama`
-
-### Main
-
-[main.py](main.py)
-
-- Added waiting
-- Added printing of Vocabulary Plus version as well as Python version
-
-### Installation Scripts
-
-[install.sh](install.sh) and [install.bat](install.bat)
-
-- You can now run Vocabulary Plus with the `vocabularyplus` command in your terminal.  
-Use `vocabularyplus create` to create a vocabulary file.
-- Now deletes requirements.txt after installation
-
-[_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.0.0)
-
-## v1.0.1
-
-Released: 30th November 2025
-
-### Create Vocab File
-
-[create_vocab_file.py](create_vocab_file.py)
-
-- Made colours consistent
-- Properly implemented `KeyboardInterrupt` handling
-- System information print edited to align with Main
-
-### Installation Scripts
-
-[install.sh](install.sh) and [install.bat](install.bat)
-
-- Added version print
-
-#### Windows Installer
-
-[install.bat](install.bat)
-
-- Changed accidental use of 'color' to 'colour'
-
-### Markdown Descriptions
-
-[UPDATES.md](UPDATES.md) and [README.md](README.md)
-
-- Renamed UPDATES.md to [updates.md](updates.md)
-- Edited link to updates in [README](README.md)
-
-[_View on GitHub_](https://github.com/46Dimensions/VocabularyPlus/releases/v1.0.1)
+Vocabulary Plus is regularly updated. Below is a list of recent updates (v1.1.0 to v1.4.0).
+To view older release notes, see tags v1.3.1 or older.
 
 ## v1.1.0
 
