@@ -544,7 +544,7 @@ def main() -> None:
 
         # Pause briefly so the user can read the feedback, then clean up the terminal lines that were printed for the question/answer.
         time.sleep(3)
-        clear_lines(3)
+        clear_lines(4)
         question_number += 1
 
     # Store user answers and correct answers for summary
